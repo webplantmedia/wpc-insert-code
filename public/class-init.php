@@ -88,8 +88,7 @@ class WPC_Insert_Code {
 		add_action( 'wpc_insert_code_above_content', array( $this, 'insert_code_above_content' ) );
 		add_action( 'wpc_insert_code_below_content', array( $this, 'insert_code_below_content' ) );
 
-		add_filter( 'mime_types', array( $this, 'add_font_mime_types' ), 10, 1 );
-
+		add_filter( 'wpc_insert_code_value', array( $this, 'wrap_code_value' ), 10, 2 );
 	}
 
 	/**
@@ -175,6 +174,7 @@ class WPC_Insert_Code {
 	public function insert_code_head() {
 		if ( $value = get_option( $this->plugin_prefix . '_head' ) ) {
 			if ( ! empty( $value ) ) {
+				$value = apply_filters( 'wpc_insert_code_value', $value, 'head' );
 				echo $value;
 			}
 		}
@@ -191,6 +191,7 @@ class WPC_Insert_Code {
 	public function insert_code_footer() {
 		if ( $value = get_option( $this->plugin_prefix . '_footer' ) ) {
 			if ( ! empty( $value ) ) {
+				$value = apply_filters( 'wpc_insert_code_value', $value, 'footer' );
 				echo $value;
 			}
 		}
@@ -208,6 +209,7 @@ class WPC_Insert_Code {
 		if ( $this->helper->test_theme_support_for_insert( 'top-of-page' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_top_of_page' ) ) {
 				if ( ! empty( $value ) ) {
+					$value = apply_filters( 'wpc_insert_code_value', $value, 'top-of-page' );
 					echo $value;
 				}
 			}
@@ -226,6 +228,7 @@ class WPC_Insert_Code {
 		if ( $this->helper->test_theme_support_for_insert( 'above-header' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_above_header' ) ) {
 				if ( ! empty( $value ) ) {
+					$value = apply_filters( 'wpc_insert_code_value', $value, 'above-header' );
 					echo $value;
 				}
 			}
@@ -244,6 +247,7 @@ class WPC_Insert_Code {
 		if ( $this->helper->test_theme_support_for_insert( 'below-header' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_below_header' ) ) {
 				if ( ! empty( $value ) ) {
+					$value = apply_filters( 'wpc_insert_code_value', $value, 'below-header' );
 					echo $value;
 				}
 			}
@@ -262,6 +266,7 @@ class WPC_Insert_Code {
 		if ( $this->helper->test_theme_support_for_insert( 'above-content' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_above_content' ) ) {
 				if ( ! empty( $value ) ) {
+					$value = apply_filters( 'wpc_insert_code_value', $value, 'above-content' );
 					echo $value;
 				}
 			}
@@ -280,10 +285,39 @@ class WPC_Insert_Code {
 		if ( $this->helper->test_theme_support_for_insert( 'below-content' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_below_content' ) ) {
 				if ( ! empty( $value ) ) {
+					$value = apply_filters( 'wpc_insert_code_value', $value, 'below-content' );
 					echo $value;
 				}
 			}
 		}
+	}
+
+	/**
+	 * Wrap certain code snippets in div tag
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @param string $value
+	 * @param string $id
+	 * @return string
+	 */
+	public function wrap_code_value( $value, $id ) {
+		$value = trim( $value );
+
+		if ( empty( $value ) )
+			return $value;
+
+		switch ( $id ) {
+			case 'above-header':
+			case 'below-header':
+			case 'above-content':
+			case 'below-content':
+				$value = '<div class="wpc-insert-code wpc-insert-code-' . $id . '">' . $value . '</div>';
+				break;
+		}
+
+		return $value;
 	}
 
 	/**
