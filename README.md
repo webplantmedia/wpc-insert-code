@@ -13,7 +13,7 @@ Easily insert HTML, Javascript, CSS, into the head and footer areas of your site
 
 ## Description ##
 
-This plugin makes it easy for you to add custom scripts to the head and footer sections of your site. A theme can also add theme support to enable the insert of custom scripts at the top of a page, above header, below header, above content, and below content.
+This plugin makes it easy for you to add custom scripts to the head and footer sections of your site. A theme can also add theme support to enable the insert of custom code (HTML, Javascript, and CSS) at the top of a page, above header, below header, above content, and below content.
 
 [Live Demo & Documentation](http://webplantmedia.com/starter-themes/wordpresscanvas/features/plugins/wpc-insert-code/)
 
