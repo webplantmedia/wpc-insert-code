@@ -58,6 +58,7 @@ class WPC_Insert_Codes {
 	 * @var      object
 	 */
 	protected static $instance = null;
+	public static $helper = null;
 
 	/**
 	 * Initialize the plugin by setting localization and loading public scripts
@@ -68,12 +69,20 @@ class WPC_Insert_Codes {
 	private function __construct() {
 		define( 'WPC_INSERT_CODES_IS_ACTIVATED', true );
 
+		$this->helper = WPC_Insert_Codes_Helper::get_instance();
+		$this->helper->plugin_slug = $this->plugin_slug;
+		$this->helper->plugin_prefix = $this->plugin_prefix;
+
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
 		// Load public-facing style sheet and JavaScript.
 		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+		add_action( 'wp_head', array( $this, 'insert_codes_head' ), 9999 );
+		add_action( 'wp_footer', array( $this, 'insert_codes_footer' ), 9999 );
+		add_action( 'wpc_insert_codes_top_of_page', array( $this, 'insert_codes_top_of_page' ), 9999 );
 
 		add_filter( 'mime_types', array( $this, 'add_font_mime_types' ), 10, 1 );
 
@@ -149,6 +158,56 @@ class WPC_Insert_Codes {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), array( 'jquery' ), self::VERSION );
+	}
+
+	/**
+	 * Insert code in head section of HTML document
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function insert_codes_head() {
+		if ( $value = get_option( $this->plugin_prefix . '_head' ) ) {
+			if ( ! empty( $value ) ) {
+				echo $value;
+			}
+		}
+	}
+
+	/**
+	 * Insert code in footer section of HTML document
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function insert_codes_footer() {
+		if ( $value = get_option( $this->plugin_prefix . '_footer' ) ) {
+			if ( ! empty( $value ) ) {
+				echo $value;
+			}
+		}
+	}
+
+	/**
+	 * Insert code at top of page
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function insert_codes_top_of_page() {
+		if ( $this->helper->test_theme_support_for_insert( 'top-of-page' ) ) {
+			if ( $value = get_option( $this->plugin_prefix . '_top_of_page' ) ) {
+				if ( ! empty( $value ) ) {
+					echo $value;
+				}
+			}
+		}
 	}
 
 	/**

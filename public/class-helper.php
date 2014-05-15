@@ -53,4 +53,26 @@ class WPC_Insert_Codes_Helper {
 
 		return self::$instance;
 	}
+
+	/**
+	 * Test string to array in theme supports
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @param string $section
+	 * @return bool
+	 */
+	public function test_theme_support_for_insert( $section ) {
+		if ( current_theme_supports( $this->plugin_slug ) ) {
+			$supports = get_theme_support( $this->plugin_slug );
+			if ( isset( $supports[0] ) && is_array( $supports[0] ) ) {
+				if ( in_array( $section, $supports[0] ) ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }
