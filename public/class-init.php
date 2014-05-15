@@ -1,8 +1,8 @@
 <?php
 /**
- * WPC_Insert_Codes
+ * WPC_Insert_Code
  *
- * @package   WPC_Insert_Codes
+ * @package   WPC_Insert_Code
  * @author    Chris Baldelomar <chris@webplantmedia.com>
  * @license   GPL-2.0+
  * @link      http://webplantmedia.com
@@ -18,10 +18,10 @@
  *
  * @TODO: Rename this class to a proper name for your plugin.
  *
- * @package WPC_Insert_Codes
+ * @package WPC_Insert_Code
  * @author  Chris Baldelomar <chris@webplantmedia.com>
  */
-class WPC_Insert_Codes {
+class WPC_Insert_Code {
 
 	/**
 	 * Plugin version, used for cache-busting of style and script file references.
@@ -47,8 +47,8 @@ class WPC_Insert_Codes {
 	 *
 	 * @var      string
 	 */
-	protected $plugin_slug = 'wpc-insert-codes';
-	protected $plugin_prefix = 'wpc_insert_codes';
+	protected $plugin_slug = 'wpc-insert-code';
+	protected $plugin_prefix = 'wpc_insert_code';
 
 	/**
 	 * Instance of this class.
@@ -67,9 +67,9 @@ class WPC_Insert_Codes {
 	 * @since     1.0.0
 	 */
 	private function __construct() {
-		define( 'WPC_INSERT_CODES_IS_ACTIVATED', true );
+		define( 'WPC_INSERT_CODE_IS_ACTIVATED', true );
 
-		$this->helper = WPC_Insert_Codes_Helper::get_instance();
+		$this->helper = WPC_Insert_Code_Helper::get_instance();
 		$this->helper->plugin_slug = $this->plugin_slug;
 		$this->helper->plugin_prefix = $this->plugin_prefix;
 
@@ -80,13 +80,13 @@ class WPC_Insert_Codes {
 		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
-		add_action( 'wp_head', array( $this, 'insert_codes_head' ), 9999 );
-		add_action( 'wp_footer', array( $this, 'insert_codes_footer' ), 9999 );
-		add_action( 'wpc_insert_codes_top_of_page', array( $this, 'insert_codes_top_of_page' ) );
-		add_action( 'wpc_insert_codes_above_header', array( $this, 'insert_codes_above_header' ) );
-		add_action( 'wpc_insert_codes_below_header', array( $this, 'insert_codes_below_header' ) );
-		add_action( 'wpc_insert_codes_above_content', array( $this, 'insert_codes_above_content' ) );
-		add_action( 'wpc_insert_codes_below_content', array( $this, 'insert_codes_below_content' ) );
+		add_action( 'wp_head', array( $this, 'insert_code_head' ), 9999 );
+		add_action( 'wp_footer', array( $this, 'insert_code_footer' ), 9999 );
+		add_action( 'wpc_insert_code_top_of_page', array( $this, 'insert_code_top_of_page' ) );
+		add_action( 'wpc_insert_code_above_header', array( $this, 'insert_code_above_header' ) );
+		add_action( 'wpc_insert_code_below_header', array( $this, 'insert_code_below_header' ) );
+		add_action( 'wpc_insert_code_above_content', array( $this, 'insert_code_above_content' ) );
+		add_action( 'wpc_insert_code_below_content', array( $this, 'insert_code_below_content' ) );
 
 		add_filter( 'mime_types', array( $this, 'add_font_mime_types' ), 10, 1 );
 
@@ -172,7 +172,7 @@ class WPC_Insert_Codes {
 	 *
 	 * @return void
 	 */
-	public function insert_codes_head() {
+	public function insert_code_head() {
 		if ( $value = get_option( $this->plugin_prefix . '_head' ) ) {
 			if ( ! empty( $value ) ) {
 				echo $value;
@@ -188,7 +188,7 @@ class WPC_Insert_Codes {
 	 *
 	 * @return void
 	 */
-	public function insert_codes_footer() {
+	public function insert_code_footer() {
 		if ( $value = get_option( $this->plugin_prefix . '_footer' ) ) {
 			if ( ! empty( $value ) ) {
 				echo $value;
@@ -204,7 +204,7 @@ class WPC_Insert_Codes {
 	 *
 	 * @return void
 	 */
-	public function insert_codes_top_of_page() {
+	public function insert_code_top_of_page() {
 		if ( $this->helper->test_theme_support_for_insert( 'top-of-page' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_top_of_page' ) ) {
 				if ( ! empty( $value ) ) {
@@ -222,7 +222,7 @@ class WPC_Insert_Codes {
 	 *
 	 * @return void
 	 */
-	public function insert_codes_above_header() {
+	public function insert_code_above_header() {
 		if ( $this->helper->test_theme_support_for_insert( 'above-header' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_above_header' ) ) {
 				if ( ! empty( $value ) ) {
@@ -240,7 +240,7 @@ class WPC_Insert_Codes {
 	 *
 	 * @return void
 	 */
-	public function insert_codes_below_header() {
+	public function insert_code_below_header() {
 		if ( $this->helper->test_theme_support_for_insert( 'below-header' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_below_header' ) ) {
 				if ( ! empty( $value ) ) {
@@ -258,7 +258,7 @@ class WPC_Insert_Codes {
 	 *
 	 * @return void
 	 */
-	public function insert_codes_above_content() {
+	public function insert_code_above_content() {
 		if ( $this->helper->test_theme_support_for_insert( 'above-content' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_above_content' ) ) {
 				if ( ! empty( $value ) ) {
@@ -276,7 +276,7 @@ class WPC_Insert_Codes {
 	 *
 	 * @return void
 	 */
-	public function insert_codes_below_content() {
+	public function insert_code_below_content() {
 		if ( $this->helper->test_theme_support_for_insert( 'below-content' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_below_content' ) ) {
 				if ( ! empty( $value ) ) {

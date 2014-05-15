@@ -6,7 +6,7 @@
 * Needed common CSS trick
 */
 
-.wpc-insert-codes-clearfix:after {
+.wpc-insert-code-clearfix:after {
      visibility: hidden;
      display: block;
      font-size: 0;
@@ -15,19 +15,19 @@
      height: 0;
  }
 
-.wpc-insert-codes-clearfix { display: inline-block; }
+.wpc-insert-code-clearfix { display: inline-block; }
 
-* html .wpc-insert-codes-clearfix { 
+* html .wpc-insert-code-clearfix { 
 	height: 1%;
 }
 
-.wpc-insert-codes-clearfix { display: block; }
+.wpc-insert-code-clearfix { display: block; }
 
-.wpc-insert-codes-textarea-wrapper {
+.wpc-insert-code-textarea-wrapper {
 	max-width: 900px;
 	width: 100%;
 }
-.wpc-insert-codes-textarea {
+.wpc-insert-code-textarea {
 	height: 210px;
 	width: 100%;
 }

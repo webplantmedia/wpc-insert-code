@@ -2,7 +2,7 @@
 /**
  * WPC Web Fonts.
  *
- * @package   WPC_Insert_Codes_Admin
+ * @package   WPC_Insert_Code_Admin
  * @author    Chris Baldelomar <chris@webplantmedia.com>
  * @license   GPL-2.0+
  * @link      http://webplantmedia.com
@@ -18,10 +18,10 @@
  *
  * @TODO: Rename this class to a proper name for your plugin.
  *
- * @package WPC_Insert_Codes_Admin
+ * @package WPC_Insert_Code_Admin
  * @author  Chris Baldelomar <chris@webplantmedia.com>
  */
-class WPC_Insert_Codes_Admin {
+class WPC_Insert_Code_Admin {
 
 	/**
 	 * Instance of this class.
@@ -53,7 +53,7 @@ class WPC_Insert_Codes_Admin {
 		/*
 		 * Call $plugin_slug from public plugin class.
 		 */
-		$this->plugin = WPC_Insert_Codes::get_instance();
+		$this->plugin = WPC_Insert_Code::get_instance();
 
 		$this->plugin_slug = $this->plugin->get_plugin_slug();
 		$this->plugin_prefix = $this->plugin->get_plugin_prefix();
@@ -104,7 +104,7 @@ class WPC_Insert_Codes_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array(), WPC_Insert_Codes::VERSION );
+			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array(), WPC_Insert_Code::VERSION );
 		}
 
 	}
@@ -126,7 +126,7 @@ class WPC_Insert_Codes_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), WPC_Insert_Codes::VERSION );
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), WPC_Insert_Code::VERSION );
 		}
 
 	}
@@ -154,8 +154,8 @@ class WPC_Insert_Codes_Admin {
 		 */
 		$this->plugin_screen_hook_suffix = add_submenu_page(
 			'options-general.php',
-			__( 'Insert Codes', 'wpc-insert-codes' ),
-			__( 'Insert Codes', 'wpc-insert-codes' ),
+			__( 'Insert Code', 'wpc-insert-code' ),
+			__( 'Insert Code', 'wpc-insert-code' ),
 			'manage_options',
 			$this->plugin_slug,
 			array( $this, 'display_plugin_admin_page' )
@@ -195,7 +195,7 @@ class WPC_Insert_Codes_Admin {
 
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', 'wpc-insert-codes' ) . '</a>'
+				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', 'wpc-insert-code' ) . '</a>'
 			),
 			$links
 		);

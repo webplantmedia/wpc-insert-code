@@ -19,7 +19,7 @@
  * @package WPCWF_Helper
  * @author	Chris Baldelomar <chris@webplantmedia.com>
  */
-class WPC_Insert_Codes_Helper {
+class WPC_Insert_Code_Helper {
 	/**
 	 * Instance of this class.
 	 *
@@ -59,8 +59,8 @@ class WPC_Insert_Codes_Helper {
 	}
 
 	public function check_supports() {
-		if ( current_theme_supports( 'wpc-insert-codes' ) ) {
-			$supports = get_theme_support( 'wpc-insert-codes' );
+		if ( current_theme_supports( 'wpc-insert-code' ) ) {
+			$supports = get_theme_support( 'wpc-insert-code' );
 
 			if ( isset( $supports[0] ) && is_array( $supports[0] ) ) {
 				foreach ( $supports[0] as $key => $value ) {

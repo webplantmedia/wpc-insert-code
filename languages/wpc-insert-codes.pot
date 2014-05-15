@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/plugins/wpc-insert-codes\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/plugins/wpc-insert-code\n"
 "POT-Creation-Date: 2013-05-10 11:23:19+00:00\n"
 "PO-Revision-Date: 2013-05-10 10:37-0500\n"
 "Last-Translator: FULL NAME <email@example.com>\n"
