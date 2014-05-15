@@ -82,7 +82,11 @@ class WPC_Insert_Codes {
 
 		add_action( 'wp_head', array( $this, 'insert_codes_head' ), 9999 );
 		add_action( 'wp_footer', array( $this, 'insert_codes_footer' ), 9999 );
-		add_action( 'wpc_insert_codes_top_of_page', array( $this, 'insert_codes_top_of_page' ), 9999 );
+		add_action( 'wpc_insert_codes_top_of_page', array( $this, 'insert_codes_top_of_page' ) );
+		add_action( 'wpc_insert_codes_above_header', array( $this, 'insert_codes_above_header' ) );
+		add_action( 'wpc_insert_codes_below_header', array( $this, 'insert_codes_below_header' ) );
+		add_action( 'wpc_insert_codes_above_content', array( $this, 'insert_codes_above_content' ) );
+		add_action( 'wpc_insert_codes_below_content', array( $this, 'insert_codes_below_content' ) );
 
 		add_filter( 'mime_types', array( $this, 'add_font_mime_types' ), 10, 1 );
 
@@ -203,6 +207,78 @@ class WPC_Insert_Codes {
 	public function insert_codes_top_of_page() {
 		if ( $this->helper->test_theme_support_for_insert( 'top-of-page' ) ) {
 			if ( $value = get_option( $this->plugin_prefix . '_top_of_page' ) ) {
+				if ( ! empty( $value ) ) {
+					echo $value;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Insert code above header
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function insert_codes_above_header() {
+		if ( $this->helper->test_theme_support_for_insert( 'above-header' ) ) {
+			if ( $value = get_option( $this->plugin_prefix . '_above_header' ) ) {
+				if ( ! empty( $value ) ) {
+					echo $value;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Insert code below header
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function insert_codes_below_header() {
+		if ( $this->helper->test_theme_support_for_insert( 'below-header' ) ) {
+			if ( $value = get_option( $this->plugin_prefix . '_below_header' ) ) {
+				if ( ! empty( $value ) ) {
+					echo $value;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Insert code above content
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function insert_codes_above_content() {
+		if ( $this->helper->test_theme_support_for_insert( 'above-content' ) ) {
+			if ( $value = get_option( $this->plugin_prefix . '_above_content' ) ) {
+				if ( ! empty( $value ) ) {
+					echo $value;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Insert code below content
+	 *
+	 * @since 3.9
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function insert_codes_below_content() {
+		if ( $this->helper->test_theme_support_for_insert( 'below-content' ) ) {
+			if ( $value = get_option( $this->plugin_prefix . '_below_content' ) ) {
 				if ( ! empty( $value ) ) {
 					echo $value;
 				}

@@ -61,7 +61,7 @@ class WPC_Insert_Codes_Admin {
 
 		// Load admin style sheet and JavaScript.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+		// add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
@@ -126,7 +126,7 @@ class WPC_Insert_Codes_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			// wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), WPC_Insert_Codes::VERSION );
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), WPC_Insert_Codes::VERSION );
 		}
 
 	}
@@ -170,6 +170,10 @@ class WPC_Insert_Codes_Admin {
 	public function register_settings() {
 		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_head' );
 		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_top_of_page' );
+		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_above_header' );
+		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_below_header' );
+		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_above_content' );
+		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_below_content' );
 		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_footer' );
 	}
 

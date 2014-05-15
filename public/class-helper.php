@@ -29,6 +29,9 @@ class WPC_Insert_Codes_Helper {
 	 */
 	protected static $instance = null;
 
+	// top-of-page, above-header, below-header, above-content, below-content
+	protected $supports = array();
+
 	/**
 	 * Initialize the plugin by loading admin scripts & styles and adding a
 	 * settings page and menu.
@@ -36,6 +39,7 @@ class WPC_Insert_Codes_Helper {
 	 * @since		1.0.0
 	 */
 	private function __construct() {
+		add_action( 'init', array( $this, 'check_supports' ) );
 	}
 	/**
 	 * Return an instance of this class.
@@ -54,6 +58,18 @@ class WPC_Insert_Codes_Helper {
 		return self::$instance;
 	}
 
+	public function check_supports() {
+		if ( current_theme_supports( 'wpc-insert-codes' ) ) {
+			$supports = get_theme_support( 'wpc-insert-codes' );
+
+			if ( isset( $supports[0] ) && is_array( $supports[0] ) ) {
+				foreach ( $supports[0] as $key => $value ) {
+					$this->supports[] = $value;
+				}
+			}
+		}
+	}
+
 	/**
 	 * Test string to array in theme supports
 	 *
@@ -64,13 +80,8 @@ class WPC_Insert_Codes_Helper {
 	 * @return bool
 	 */
 	public function test_theme_support_for_insert( $section ) {
-		if ( current_theme_supports( $this->plugin_slug ) ) {
-			$supports = get_theme_support( $this->plugin_slug );
-			if ( isset( $supports[0] ) && is_array( $supports[0] ) ) {
-				if ( in_array( $section, $supports[0] ) ) {
-					return true;
-				}
-			}
+		if ( in_array( $section, $this->supports ) ) {
+			return true;
 		}
 
 		return false;

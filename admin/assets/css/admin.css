@@ -23,101 +23,11 @@
 
 .wpc-insert-codes-clearfix { display: block; }
 
-
-/**
-* Google Fonts
-*
-* Styles for Fonts subpage in Wordpress dashboard
-*/
-
-.wpc-insert-codes-google-fonts-wrapper {
-	width: 500px;
-}
-
-.wpc-insert-codes-font-table {
-	height: 300px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	border: 1px solid #e5e5e5;
-	padding: 8px 12px 10px;
-}
-
-.wpc-insert-codes-font-row {
-	clear: both;
-	padding: 0;
-}
-.wpc-insert-codes-font-variant-row {
-	padding: 5px 0;
-}
-
-.wpc-insert-codes-font-row:nth-child(even) {
-	background-color: #e5e5e5;
-}
-
-.wpc-insert-codes-font-title {
-	width: 200px;
-	float: left;
-	padding-right: 20px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	text-align: right;
-	white-space: nowrap;
-}
-
-.wpc-insert-codes-font-variants {
-	width: 200px;
-	float: left;
-}
-
-#wpc-insert-codes-font-preview {
-	font-size: 28px;
-	line-height: 1.5;
-	padding: 8px 12px 10px;
-}
-
-.wpc-insert-codes-font-preview-text {
-	margin-right: 10px;
-}
-
-#wpc-insert-codes-plugin .wpc-insert-codes-font-row-remove {
-	vertical-align: middle;
-}
-
-.wpc-insert-codes-font-preview-row {
-	margin-bottom: 15px;
-}
-/* .wpc-insert-codes-column-half {
-	width: 49.5%;
-	float: left;
-	margin-right: 1%;
-}
-.wpc-insert-codes-column-half.wpc-insert-codes-column-last {
-	margin-right: 0;
-} */
-
-/**
-* Custom Fonts
-*
-* Styles for Fonts subpage in Wordpress dashboard
-*/
-.wpc-insert-codes-font-upload-wrapper {
+.wpc-insert-codes-textarea-wrapper {
 	max-width: 900px;
 	width: 100%;
 }
-.wpc-insert-codes-upload-font-textarea {
+.wpc-insert-codes-textarea {
 	height: 210px;
 	width: 100%;
-}
-.wpc-insert-codes-font-preview-wrapper {
-	max-width: 900px;
-}
-.wpc-insert-codes-upload-preview {
-	margin-bottom: 5px;
-	padding: 8px 12px 10px 12px;
-}
-.wpc-insert-codes-upload-preview-p {
-	font-size: 28px;
-}
-.wpc-insert-codes-upload-preview p {
-	margin: 0;
 }
