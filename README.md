@@ -41,11 +41,15 @@ Thank you so much for even considering supporting my work. If you have benefited
 ### How do I add theme support
 
 ```
-// Enable support for custom code to be inserted on top of page.
-add_theme_support( 'wpc-insert-code', array( 'top-of-page' ) );
+// Enable support for custom code to be inserted on various sections of theme
+add_theme_support( 'wpc-insert-code', array( 'top-of-page', 'above-header', 'below-header', 'above-content', 'below-content' ) );
 
-<!-- add line of code below your body tag in your header.php file -->
+<!-- add lines of code in the appropriate section of your theme -->
 <?php do_action( 'wpc_insert_code_top_of_page' ); ?>
+<?php do_action( 'wpc_insert_code_above_header' ); ?>
+<?php do_action( 'wpc_insert_code_below_header' ); ?>
+<?php do_action( 'wpc_insert_code_above_content' ); ?>
+<?php do_action( 'wpc_insert_code_below_content' ); ?>
 ```
 
 ## Screenshots ##
