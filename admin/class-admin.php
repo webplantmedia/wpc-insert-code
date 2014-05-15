@@ -126,7 +126,7 @@ class WPC_Insert_Codes_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), WPC_Insert_Codes::VERSION );
+			// wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), WPC_Insert_Codes::VERSION );
 		}
 
 	}
@@ -152,14 +152,14 @@ class WPC_Insert_Codes_Admin {
 		 * - Change 'manage_options' to the capability you see fit
 		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
 		 */
-		$this->plugin_screen_hook_suffix = add_theme_page(
-			__( 'Web Fonts', 'wpc-insert-codes' ),
-			__( 'Web Fonts', 'wpc-insert-codes' ),
+		$this->plugin_screen_hook_suffix = add_submenu_page(
+			'options-general.php',
+			__( 'Insert Codes', 'wpc-insert-codes' ),
+			__( 'Insert Codes', 'wpc-insert-codes' ),
 			'manage_options',
 			$this->plugin_slug,
 			array( $this, 'display_plugin_admin_page' )
 		);
-
 	}
 
 	/**
@@ -168,8 +168,9 @@ class WPC_Insert_Codes_Admin {
 	 * @since    1.0.0
 	 */
 	public function register_settings() {
-		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_google', array( $this->plugin->helper, 'sanitize_google_fonts' ) );
-		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_upload' );
+		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_head' );
+		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_top_of_page' );
+		register_setting( $this->plugin_slug . '-group', $this->plugin_prefix . '_footer' );
 	}
 
 	/**
@@ -190,7 +191,7 @@ class WPC_Insert_Codes_Admin {
 
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'themes.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', 'wpc-insert-codes' ) . '</a>'
+				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', 'wpc-insert-codes' ) . '</a>'
 			),
 			$links
 		);

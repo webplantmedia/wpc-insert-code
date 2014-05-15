@@ -49,10 +49,6 @@ class WPC_Insert_Codes {
 	 */
 	protected $plugin_slug = 'wpc-insert-codes';
 	protected $plugin_prefix = 'wpc_insert_codes';
-	protected $google_font_code = '';
-	protected $uploaded_fonts = '';
-
-	public static $helper = null;
 
 	/**
 	 * Instance of this class.
@@ -72,16 +68,12 @@ class WPC_Insert_Codes {
 	private function __construct() {
 		define( 'WPC_INSERT_CODES_IS_ACTIVATED', true );
 
-		$this->helper = WPC_Insert_Codes_Helper::get_instance();
-		$this->helper->plugin_slug = $this->plugin_slug;
-		$this->helper->plugin_prefix = $this->plugin_prefix;
-
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
 		// Load public-facing style sheet and JavaScript.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		add_filter( 'mime_types', array( $this, 'add_font_mime_types' ), 10, 1 );
 
