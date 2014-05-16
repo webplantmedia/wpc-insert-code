@@ -34,7 +34,7 @@ Thank you so much for even considering supporting my work. If you have benefited
 1. Uzip the `wpc-insert-code.zip` folder.
 2. Upload the `wpc-insert-code` folder to your `/wp-content/plugins` directory.
 3. In your WordPress dashboard, head over to the *Plugins* section.
-4. Activate *WP Canvas - Web Fonts*.
+4. Activate *WP Canvas - Insert Codes*.
 
 == Frequently Asked Questions ==
 
