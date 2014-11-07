@@ -31,7 +31,7 @@ class WPC_Insert_Code_Admin {
 	 * @var      object
 	 */
 	protected static $instance = null;
-	protected static $plugin = null;
+	protected $plugin = null;
 
 	/**
 	 * Slug of the plugin screen.

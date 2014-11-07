@@ -58,7 +58,7 @@ class WPC_Insert_Code {
 	 * @var      object
 	 */
 	protected static $instance = null;
-	public static $helper = null;
+	public $helper = null;
 
 	/**
 	 * Initialize the plugin by setting localization and loading public scripts
