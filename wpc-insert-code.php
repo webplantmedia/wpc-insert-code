@@ -5,7 +5,7 @@ Plugin URI: http://webplantmedia.com/starter-themes/wordpresscanvas/features/plu
 Description: Easily insert HTML, Javascript, CSS, into the head and footer areas of your site.
 Author: Chris Baldelomar
 Author URI: http://webplantmedia.com/
-Version: 1.0
+Version: 1.1
 License: GPLv2 or later
 */
 

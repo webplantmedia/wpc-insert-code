@@ -60,6 +60,10 @@ add_theme_support( 'wpc-insert-code', array( 'top-of-page', 'above-header', 'bel
 
 ## Changelog ##
 
+### Version 1.1
+
+* removed static declaration on none static members
+
 ### Version 1.0
 
 * Plugin released.  Everything is new!

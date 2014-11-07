@@ -30,8 +30,8 @@ class WPC_Insert_Code {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0';
-	const DB_VERSION = '1.0';
+	const VERSION = '1.1';
+	const DB_VERSION = '1.1';
 
 	/**
 	 * @TODO - Rename "plugin-name" to the name your your plugin
