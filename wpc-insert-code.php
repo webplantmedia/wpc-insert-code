@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WP Canvas - Insert Code
-Plugin URI: http://webplantmedia.com/starter-themes/wordpresscanvas/features/plugins/wpc-insert-code/
+Plugin Name: Insert Code by Angie Makes
+Plugin URI: http://angiemakes.com/feminine-wordpress-blog-themes-women/
 Description: Easily insert HTML, Javascript, CSS, into the head and footer areas of your site.
 Author: Chris Baldelomar
-Author URI: http://webplantmedia.com/
-Version: 1.1
+Author URI: http://angiemakes.com/
+Version: 1.2
 License: GPLv2 or later
 */
 

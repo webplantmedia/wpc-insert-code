@@ -30,7 +30,7 @@ class WPC_Insert_Code {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.1';
+	const VERSION = '1.2';
 	const DB_VERSION = '1.1';
 
 	/**
